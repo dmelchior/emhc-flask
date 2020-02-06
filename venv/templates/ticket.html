@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ticket Form</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twi tter-bootstrap/4.0.0/css/bootstrap-reboot.min.css">        
+        <link rel="stylesheet" type="text/css" href="static/ticket_style.css">
+        <link rel="stylesheet" type="text/css" href="static/esignature.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        
+    </head>
+    <body>
+        <!-- <video width="1280" height="720" class="background" autoplay muted loop>
+        <source src="https://codepen.jonnitto.ch/BackgroundVideo.mp4" type="video/mp4">
+        </video> -->
+
+        <form action="submit_form" method="post" class="form-card">
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Eric Melchior Hauling Co.</legend>
+                <!-- <h3>3870 Karleen Rd. Hephzibah GA 30815</h3> -->
+                <div class="form-element form-input">
+                    
+                    <!-- <p id="demo"></p> -->
+                    <p id="date"></p>
+                </div>
+                <div class="form-element form-input">
+                    <input name="company" id="field-omv6eo-metm0n-5j55wv-w3wbws-6nm2b9" class="form-element-field" placeholder="Please fill in the full company name" type="input" required/>
+                    <div class="form-element-bar"></div>
+                    <label class="form-element-label" for="field-omv6eo-metm0n-5j55wv-w3wbws-6nm2b9">Company Name</label>
+                </div>
+                <div class="form-element form-select">
+                    <select name="payment" id="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r" class="form-element-field">
+                        <option disabled selected value="" class="form-select-placeholder"></option>
+                        <option value="Cash">Paying with Cash</option>
+                        <option value="Account">Adding to Account</option>
+                        <option value="Credit" disabled>Paying with Credit Card (Call Office)</option>
+                    </select>
+                    <div class="form-element-bar"></div>
+                    <label class="form-element-label" for="field-be1h8i-ll2hpg-q4efzm-nfjj1e-udkw5r">Select a Payment Type</label>
+                </div>
+                <div class="form-checkbox form-checkbox-inline">
+                    <div name="materials" class="form-checkbox-legend">Materials (check all that apply):</div>
+                    <label class="form-checkbox-label">
+                        <input name="trees" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Trees</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="concrete" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Concrete</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="asphalt" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Asphalt</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="brick" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Brick</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="block" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Block</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="rock" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Rock</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="dirt" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Dirt</span>
+                    </label>
+                    <label class="form-checkbox-label">
+                        <input name="mud" class="form-checkbox-field" type="checkbox" />
+                        <i class="form-checkbox-button"></i>
+                        <span>Mud</span>
+                    </label>
+                </div>
+                <div class="form-element form-input">
+                    <input name="yards" id="field-yards" class="form-element-field" placeholder="Enter the size of your load in yards" type="input" required/>
+                    <div class="form-element-bar"></div>
+                    <label class="form-element-label" for="field-yards">Yardage</label>
+                    <small class="form-element-hint">Not sure? <a href="https://www.google.com">Calculate the yardage here.</a></small>
+                </div>
+                <div class="form-element form-textarea">
+                    <textarea name="optional" id="field-optional-info" class="form-element-field" placeholder="Additional Information [Truck/Trailer Number, P.O., Job Info, Etc.]"></textarea>
+                    <div class="form-element-bar"></div>
+                    <label class="form-element-label" for="field-optional-info">Optional Information</label>
+                </div>
+                <div class="form-element form-input">
+                    <input name="driver" id="field-driver-name" class="form-element-field" placeholder="Driver first and last name" type="input" required/>
+                    <div class="form-element-bar"></div>
+                    <label class="form-element-label" for="field-driver-name">Driver Name</label>
+                </div>
+	<!-- E-Signature -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Driver Signature</h3>
+                            <br>
+                            <!-- <p>Sign your name inside the dotted line</p> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="sig-canvas" width="435" height="160">
+                                Get a better browser, bro.
+                            </canvas>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" id="sig-submitBtn">Submit Signature</button>
+                            <button class="btn btn-default" id="sig-clearBtn">Clear Signature</button>
+                        </div>
+                    </div>
+                    <br/> -->
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <textarea id="sig-dataUrl" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                        </div>
+                    </div>
+                    <br/> -->
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <img id="sig-image" src="" alt="Your signature will go here!"/>
+                        </div>
+                    </div> -->
+                </div>
+
+            </fieldset>
+            <div class="form-actions">
+                <button class="form-btn" type="submit">Complete Ticket</button>
+                <button class="form-btn-cancel -nooutline" type="reset">Cancel</button>
+            </div>
+            
+        </form>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="static/ticket_script.js"></script>
+        <script src="static/esignature.js"></script>
+    </body>
+</html>

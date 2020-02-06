@@ -1,0 +1,405 @@
+body {
+    background-color: #1b3264;
+    font-family: "Roboto", sans-serif;
+    color: #7e8eb0;
+    line-height: 1.5;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #fff;
+    line-height: 1;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #welcome {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  #slogan {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    z-index: -2;
+  }
+  #slogan h1 {
+    font-size: 2rem;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 0px;
+  }
+  
+  .layer {
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -3;
+  }
+  
+  .layer-1 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer1.png");
+    background-position: center center;
+    animation-name: flyDown;
+    animation-duration: 5s;
+  }
+  
+  .layer-2 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer2.png");
+    animation-name: flyDown;
+    animation-duration: 1.5s;
+  }
+  
+  .layer-3 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer3.png");
+    animation-name: flyDown;
+    animation-duration: 6s;
+  }
+  
+  .layer-4 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer4.png");
+    animation-name: flyDown;
+    animation-duration: 8s;
+  }
+  
+  .layer-5 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer5.png");
+    background-position: top center;
+    animation-name: flyUp;
+    animation-duration: 2s;
+  }
+  
+  .layer-6 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer6.png");
+    z-index: -1;
+  }
+  
+  .layer-7 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer7.png");
+    background-position: top center;
+    animation-name: flyUp;
+    animation-duration: 1s;
+  }
+  
+  #features {
+    display: flex;
+    justify-content: center;
+    background-color: #1b3264;
+    padding: 4rem 0;
+  }
+  
+  .feature {
+    text-align: center;
+    padding: 0rem 2rem 0rem 2rem;
+  }
+  
+  #cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b3264;
+    padding: 0 0 4rem 0;
+  }
+  
+  #footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 4rem 0;
+  }
+  
+  .btn {
+    font: 0.75rem "Roboto", sans-serif;
+    border-radius: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #fff;
+    border: none;
+    transition: all 0.2s linear;
+    z-index: 10;
+  }
+  .btn.yellow {
+    background-color: #ecae06;
+  }
+  .btn.yellow:hover {
+    background-color: #d39c05;
+  }
+  .btn.blue {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .btn.blue:hover {
+    background-color: white;
+  }
+  
+  @media all and (min-width: 1170px) {
+    .container {
+      width: 1070px;
+    }
+  
+    #slogan h1 {
+      font-size: 5rem;
+    }
+  }
+  @media all and (min-width: 900px) {
+    .container {
+      flex-direction: row;
+      align-self: center;
+      width: 1070px;
+    }
+  
+    #slogan h1 {
+      font-size: 4rem;
+    }
+  
+    #features {
+      padding: 6rem 0;
+    }
+  
+    #cta {
+      padding: 0 0 6rem 0;
+    }
+  }
+  @keyframes flyUp {
+    0% {
+      bottom: -100px;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+  @keyframes flyDown {
+    0% {
+      bottom: 100px;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+  body {
+    background-color: #1b3264;
+    font-family: "Roboto", sans-serif;
+    color: #7e8eb0;
+    line-height: 1.5;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #fff;
+    line-height: 1;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #welcome {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  #slogan {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    z-index: -2;
+  }
+  #slogan h1 {
+    font-size: 2rem;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 0px;
+  }
+  
+  .layer {
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -3;
+  }
+  
+  .layer-1 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer1.png");
+    background-position: center center;
+    animation-name: flyDown;
+    animation-duration: 5s;
+  }
+  
+  .layer-2 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer2.png");
+    animation-name: flyDown;
+    animation-duration: 1.5s;
+  }
+  
+  .layer-3 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer3.png");
+    animation-name: flyDown;
+    animation-duration: 6s;
+  }
+  
+  .layer-4 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer4.png");
+    animation-name: flyDown;
+    animation-duration: 8s;
+  }
+  
+  .layer-5 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer5.png");
+    background-position: top center;
+    animation-name: flyUp;
+    animation-duration: 2s;
+  }
+  
+  .layer-6 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer6.png");
+    z-index: -1;
+  }
+  
+  .layer-7 {
+    background-image: url("http://danielzawadzki.com/works/rocketmobile/img/slider_layer7.png");
+    background-position: top center;
+    animation-name: flyUp;
+    animation-duration: 1s;
+  }
+  
+  #features {
+    display: flex;
+    justify-content: center;
+    background-color: #1b3264;
+    padding: 4rem 0;
+  }
+  
+  .feature {
+    text-align: center;
+    padding: 0rem 2rem 0rem 2rem;
+  }
+  
+  #cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b3264;
+    padding: 0 0 4rem 0;
+  }
+  
+  #footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 4rem 0;
+  }
+  
+  .btn {
+    font: 0.75rem "Roboto", sans-serif;
+    border-radius: 1.25rem;
+    padding: .75rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #fff;
+    border: none;
+    transition: all .2s linear;
+    z-index: 10;
+  }
+  .btn.yellow {
+    background-color: #ecae06;
+  }
+  .btn.yellow:hover {
+    background-color: #d39c05;
+  }
+  .btn.blue {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .btn.blue:hover {
+    background-color: white;
+  }
+  
+  @media all and (min-width: 1170px) {
+    .container {
+      width: 1070px;
+    }
+  
+    #slogan h1 {
+      font-size: 5rem;
+    }
+  }
+  @media all and (min-width: 900px) {
+    .container {
+      flex-direction: row;
+      align-self: center;
+      width: 1070px;
+    }
+  
+    #slogan h1 {
+      font-size: 4rem;
+    }
+  
+    #features {
+      padding: 6rem 0;
+    }
+  
+    #cta {
+      padding: 0 0 6rem 0;
+    }
+  }
+  @keyframes flyUp {
+    0% {
+      bottom: -100px;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+  @keyframes flyDown {
+    0% {
+      bottom: 100px;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+  
