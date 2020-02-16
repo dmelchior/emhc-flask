@@ -20,18 +20,20 @@ def html_page(page_name):
 
 def write_to_csv(data):
     with open('database.csv', mode='a', newline="") as database2:
-        date = data['date']
+        # date = data['date']
+        time = data['time']
         company = data['company']
         payment = data['payment']
         material = data['material']
         yards = data['yards'] + " yards"
         optional = data['optional']
         driver = data['driver']
+        driverEmail = data['driver-email']
         sig = data['sig']
         csv_writer = csv.writer(database2, delimiter=',',
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
         
-        csv_writer.writerow([date, company, payment, material, yards, optional, driver, sig])
+        csv_writer.writerow([time, company, payment, material, yards, optional, driver, driverEmail, sig])
 
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
