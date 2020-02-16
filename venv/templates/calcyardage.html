@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Calculate Yardage | Eric Melchior Hauling Company, Inc.
+        </title>
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600|Roboto" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+      </head>
+    <body>
+          <section id="features">
+            <div class="container">
+              <div class="feature">
+                <h4>How to Calculate Yardage</h4>
+                <p>Multiply the three dimensions of your load together (length, width, and height)
+                    to find the number of cubic feet (0.5' x 12' x 12 = 72 cubic feet) <br><br>Divide the 
+                    cubic feet by 27 (the number of 
+                   cubic feet in a cubic yard) to find the number of cubic yards 
+                   (72 ÷ 27 = 2.67 cu. yd.).</p>
+                   <section id="cta">
+                    <a href="https://www.thecalculatorsite.com/misc/cubic-feet-calculator.php" target="_blank" class="btn yellow">Cubic Yards Calculator</a>
+                </section>
+                <!-- <img id="sig-image" src="data:image/png;base64,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"
+ alt="Your signature will go here!"/> -->
+              </div>
+          
+              <div class="feature">
+                <h4>Ready to Create a Ticket?</h4>
+                <p>If you found out the correct yardage, you are ready to create your create your ticket.</p>
+                        <a href="/ticket.html" target="_blank" class="btn yellow">Create a Ticket</a>
+                    <p><br>If you're still unsure, call us at <b>706 589-1561</b> and we will be happy to help.</p>
+              </div>
+            </div>
+          </section>
+          
+          <footer id="footer">
+            © 2020  Eric Melchior Hauling Company. All rights reserved.          
+          </footer>
+    </body>
+</html>
