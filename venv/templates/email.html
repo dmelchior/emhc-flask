@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ticket Form | Eric Melchior Hauling Company, Inc.</title>
+        <title>Email | Eric Melchior Hauling Company, Inc.</title>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Let browser know website is optimized for mobile-->
@@ -22,102 +22,34 @@
                     <div class="form-element-bar"></div>
                     <label class="form-element-label" for="today">Date</label>
                 </div> -->
-                <div class="form-element form-input">
-                    <input name="time" id="datetime" class="form-element-field" type="datetime">
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="datetime">Date / Time</label>
+                <div class="form-element">
+                   <p>Date and Time: {{ time }}</p>
                 </div>
-                <div class="form-element form-input">
-                    <input name="company" id="field-company" class="form-element-field" placeholder="Please fill in the full company name" type="input" required/>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-company">Company Name</label>
+                <div class="form-element">
+                    <p>Company Name: {{ company }}</p>
                 </div>
-                <div class="form-element form-select">
-                    <select name="payment" id="field-payment" class="form-element-field">
-                        <option disabled selected value="Please Select a Payment Option" class="form-select-placeholder"></option>
-                        <option value="Cash">Paying with Cash</option>
-                        <option value="Account">Adding to Account</option>
-                        <option value="Credit" disabled>Paying with Credit Card (Call Office)</option>
-                    </select>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-payment">Select a Payment Type</label>
+                <div class="form-element">
+                    <p>Payment Option: {{ payment }}</p>
                 </div>
-                <div class="form-element form-select">
-                    <select name="material" id="field-material" class="form-element-field">
-                        <option disabled selected value="" class="form-select-placeholder"></option>
-                        <option value="Trees/Limbs">Trees/Limbs</option>
-                        <option value="Concrete">Concrete</option>
-                        <option value="Asphalt">Asphalt</option>
-                        <option value="Brick/Block">Brick/Block</option>
-                        <option value="Mud">Mud</option>
-                        <option value="Clean Dirt">Clean Dirt</option>
-                    </select>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-material">What Are You Bringing?</label>
+                <div class="form-element">
+                   <p>Material: {{ material }} </p>
                 </div>                
-                <div class="form-element form-input">
-                    <input name="yards" id="field-yards" class="form-element-field" placeholder="Enter the size of your load in yards" type="number" required/>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-yards">How Many Yards?</label>
-                    <small class="form-element-hint"><a href="/calcyardage.html" target="_blank">Not Sure? Calculate the yardage.</a></small>
+                <div class="form-element">
+                    <p>Load Size: {{ yards }} </p>
                 </div>
-                <div class="form-element form-textarea">
-                    <textarea name="optional" id="field-optional-info" class="form-element-field" placeholder="Additional Information [Truck/Trailer Number, P.O., Job Info, Etc.]"></textarea>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-optional-info">Optional Information</label>
+                <div class="form-element">
+                    <p>Optional Info: {{ optional }} </p>
                 </div>
-                <div class="form-element form-input">
-                    <input name="driver" id="field-driver-name" class="form-element-field" placeholder="Driver first and last name" type="input" required/>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-driver-name">Driver Name</label>
+                <div class="form-element">
+                   <p>Driver: {{ driver }} </p>
                 </div>
-                <div class="form-element form-input">
-                    <input name="driver-email" id="field-driver-email" class="form-element-field" placeholder="Driver Email Address" type="email" required/>
-                    <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-driver-email">Driver Email (So we can send you a copy of your ticket)</label>
+                <div class="form-element">
+                    <p>Driver Email: {{ driverEmail }} </p>
                 </div>
-	<!-- E-Signature -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Driver Signature</h3>
-                            <!-- <p>Sign your name inside the dotted line</p> -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <canvas id="sig-canvas" width="435" height="160">
-                                Please update your browser to sign your ticket.
-                            </canvas>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- <button class="btn btn-primary" id="sig-submitBtn">Submit Signature</button> -->
-                            <!-- <button class="btn btn-default" id="sig-clearBtn">Clear Signature</button> -->
-                        </div>
-                    </div>
-                    <!-- <br/> -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <textarea hidden name='sig' id="sig-dataUrl" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-                        </div>
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img hidden id="sig-image" src=""/>
-                        </div>
-                    </div>
-                </div>
-
-            </fieldset>
-            <div class="form-actions">
-                <!-- <button class="form-btn" type="submit">Complete Ticket</button> -->
-                <button class="form-btn btn btn-primary" id="sig-submitBtn">Complete Ticket</button>
-                <!-- <button class="form-btn-cancel -nooutline" type="reset">Cancel</button> -->
-                <button class="form-btn-cancel -nooutline" id="sig-clearBtn" type="reset">Cancel</button>
-            </div>
-            
+                <div class="form-element">
+                    <p>Driver Signature:</p>
+                    <img id="sig-image" src="{{ sig }}"/>
+                </div>         
         </form>
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

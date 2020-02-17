@@ -39,20 +39,9 @@ def write_to_csv(data):
 def submit_form():
     if request.method == 'POST':
         try:
-            # for csv file
             data = request.form.to_dict()
             write_to_csv(data)
-            # for email
-            time = request.form.get("time")
-            company = request.form.get("company")
-            payment = request.form.get("payment")
-            material = request.form.get("material")
-            yards = request.form.get("yards")
-            optional = request.form.get("optional")
-            driver = request.form.get("driver")
-            driverEmail = request.form.get("driver-email")
-            sig = request.form.get("sig")
-            return render_template('/email.html', **locals())
+            return redirect('/thankyou.html')
         except:
             return "didn't save to database"
     else:   
