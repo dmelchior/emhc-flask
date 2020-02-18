@@ -1,7 +1,9 @@
 from flask import Flask, render_template, url_for, request, redirect
+from flask_mail import Mail
 import csv
 
 app = Flask(__name__)
+mail = Mail(app)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
@@ -52,6 +54,11 @@ def submit_form():
             driver = request.form.get("driver")
             driverEmail = request.form.get("driver-email")
             sig = request.form.get("sig")
+            # send email
+            msg = Message("this is a test", subject="A new ticket from " + company)
+            msg.recipients("daniel.melchior@gmail.com")
+            msg.add_recipients(driverEmail)
+            conn.send(msg)
             return render_template('/email.html', **locals())
         except:
             return "didn't save to database"

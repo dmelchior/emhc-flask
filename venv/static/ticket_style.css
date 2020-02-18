@@ -10,6 +10,8 @@
     height: 100%;
     width: 100%;
   }
+
+
   
   .form-btn,
   .form-btn-cancel,
@@ -577,4 +579,5 @@
     background-color: #1b3264;
     /* background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%); */
   }
+
   
