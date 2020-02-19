@@ -1,19 +1,8 @@
 from flask import Flask, render_template, url_for, request, redirect
-from flask_mail import Mail, Message
+from flask_mail import Mail
 import csv
 
 app = Flask(__name__)
-
-mail_settings ={
-    "MAIL_SERVER":'smtp.gmail.com',
-    "MAIL_PORT":465,
-    "MAIL_USE_TLS":False,
-    "MAIL_USE_SSL":True,
-    "MAIL_USERNAME":'ericmelchiorhauling@gmail.com',
-    "MAIL_PASSWORD": 'Thisism@1l'
-}
-
-app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
@@ -48,18 +37,6 @@ def write_to_csv(data):
         
         csv_writer.writerow([time, company, payment, material, yards, optional, driver, driverEmail, sig])
 
-# @app.route('/email.html')
-# def email():
-#     msg = Message("this is a test", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
-#     # msg.subject("A new ticket from " + company)
-#     # msg.recipients("daniel.melchior@gmail.com")
-#     # msg.add_recipients(driverEmail)
-#     # msg.body = "testing"
-#     msg.html = '<legend class="form-legend">Eric Melchior Hauling Co.<br><small>3870 Karleen Rd. Hephzibah GA 30815</small><br><small>Office:(706) 309-9926</small></legend><div class="form-element"><p>Date and Time: {{ time }}</p></div><div class = "form-element" ><p > Company Name: {{company}} < /p ></div >'
-#     mail.send(msg)
-
-#     return render_template('/email.html')
-
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
     if request.method == 'POST':
@@ -77,18 +54,11 @@ def submit_form():
             driver = request.form.get("driver")
             driverEmail = request.form.get("driver-email")
             sig = request.form.get("sig")
-
-            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
-    # msg.subject("A new ticket from " + company)
-    # msg.recipients("daniel.melchior@gmail.com")
-    # msg.add_recipients(driverEmail)
-            # msg.body = "Time: " + time 
-            # email_template = "Eric Melchior Hauling Company\n3870 Karleen Rd. Hephzibah GA 30815\nOffice:(706)309-9926\n\nDate/Time: %s \nCompany Name: %s \nPayment Option: %s \nMaterial: %s \nLoad Size: %s \nOptional Info: %s \nDriver: %s \nDriver Email: %s \nDriver Signature: %s" % (time, company, payment, material, yards, optional, driver, driverEmail, sig)
-            # msg.body = email_template
-            msg.html=render_template('/email.html', **locals())
-           
-            mail.send(msg)
-         
+            # send email
+            msg = Message("this is a test", subject="A new ticket from " + company)
+            msg.recipients("daniel.melchior@gmail.com")
+            msg.add_recipients(driverEmail)
+            conn.send(msg)
             return render_template('/email.html', **locals())
         except:
             return "didn't save to database"
