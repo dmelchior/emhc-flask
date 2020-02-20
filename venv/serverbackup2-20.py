@@ -1,8 +1,20 @@
 from flask import Flask, render_template, url_for, request, redirect
-from flask_mail import Mail
+from flask_mail import Mail, Message
 import csv
+from binascii import a2b_base64
 
 app = Flask(__name__)
+
+mail_settings ={
+    "MAIL_SERVER":'smtp.gmail.com',
+    "MAIL_PORT":465,
+    "MAIL_USE_TLS":False,
+    "MAIL_USE_SSL":True,
+    "MAIL_USERNAME":'ericmelchiorhauling@gmail.com',
+    "MAIL_PASSWORD": 'Thisism@1l'
+}
+
+app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
@@ -15,6 +27,10 @@ if __name__ == "__main__":
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/spreadsheet')
+def spreadsheet():
+    return render_template('spreadsheet.html')
 
 @app.route('/<string:page_name>')
 def html_page(page_name):
@@ -54,12 +70,28 @@ def submit_form():
             driver = request.form.get("driver")
             driverEmail = request.form.get("driver-email")
             sig = request.form.get("sig")
-            # send email
-            msg = Message("this is a test", subject="A new ticket from " + company)
-            msg.recipients("daniel.melchior@gmail.com")
-            msg.add_recipients(driverEmail)
-            conn.send(msg)
-            return render_template('/email.html', **locals())
+
+            # convert signature from base64 data-url to an image
+            data = sig[22:]
+            binary_data = a2b_base64(data)
+            fd = open('signature.png', 'wb')
+            fd.write(binary_data)
+            fd.close()
+
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", driverEmail])
+            
+            msg.html=render_template('/email.html', **locals())
+            # uncomment if you want to send signature as attachment
+            # with app.open_resource("signature.png") as fp:
+            #     msg.attach("signature.png", "image/png", fp.read())
+
+            # attach signature embedded in email
+            with app.open_resource("signature.png") as fp:
+                msg.attach("signature.png", "image/png", fp.read(), "inline", headers=[['Content-ID','<signature>'],])
+            
+            mail.send(msg)
+         
+            return render_template('/thankyou.html', **locals())
         except:
             return "didn't save to database"
     else:   

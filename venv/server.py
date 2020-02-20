@@ -28,12 +28,16 @@ if __name__ == "__main__":
 def index():
     return render_template('index.html')
 
+@app.route('/spreadsheet')
+def spreadsheet():
+    return render_template('spreadsheet.html')
+
 @app.route('/<string:page_name>')
 def html_page(page_name):
     return render_template(page_name)
 
 def write_to_csv(data):
-    with open('database.csv', mode='a', newline="") as database2:
+    with open('templates/database.csv', mode='a', newline="") as database2:
         # date = data['date']
         time = data['time']
         company = data['company']
@@ -48,18 +52,6 @@ def write_to_csv(data):
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
         
         csv_writer.writerow([time, company, payment, material, yards, optional, driver, driverEmail, sig])
-
-# @app.route('/email.html')
-# def email():
-#     msg = Message("this is a test", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
-#     # msg.subject("A new ticket from " + company)
-#     # msg.recipients("daniel.melchior@gmail.com")
-#     # msg.add_recipients(driverEmail)
-#     # msg.body = "testing"
-#     msg.html = '<legend class="form-legend">Eric Melchior Hauling Co.<br><small>3870 Karleen Rd. Hephzibah GA 30815</small><br><small>Office:(706) 309-9926</small></legend><div class="form-element"><p>Date and Time: {{ time }}</p></div><div class = "form-element" ><p > Company Name: {{company}} < /p ></div >'
-#     mail.send(msg)
-
-#     return render_template('/email.html')
 
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
@@ -86,16 +78,14 @@ def submit_form():
             fd.write(binary_data)
             fd.close()
 
-            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", driverEmail])
-            # msg.subject("A new ticket from " + company)
-            # msg.recipients("daniel.melchior@gmail.com")
-            # msg.add_recipients(driverEmail)
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", "amelchior@hotmail.com", driverEmail])
             
             msg.html=render_template('/email.html', **locals())
             # uncomment if you want to send signature as attachment
             # with app.open_resource("signature.png") as fp:
             #     msg.attach("signature.png", "image/png", fp.read())
 
+            # attach signature embedded in email
             with app.open_resource("signature.png") as fp:
                 msg.attach("signature.png", "image/png", fp.read(), "inline", headers=[['Content-ID','<signature>'],])
             
