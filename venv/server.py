@@ -86,19 +86,19 @@ def submit_form():
             fd.write(binary_data)
             fd.close()
 
-            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
-    # msg.subject("A new ticket from " + company)
-    # msg.recipients("daniel.melchior@gmail.com")
-    # msg.add_recipients(driverEmail)
-            # msg.body = "Time: " + time 
-            # email_template = "Eric Melchior Hauling Company\n3870 Karleen Rd. Hephzibah GA 30815\nOffice:(706)309-9926\n\nDate/Time: %s \nCompany Name: %s \nPayment Option: %s \nMaterial: %s \nLoad Size: %s \nOptional Info: %s \nDriver: %s \nDriver Email: %s \nDriver Signature: %s" % (time, company, payment, material, yards, optional, driver, driverEmail, sig)
-            # msg.body = email_template
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", driverEmail])
+            # msg.subject("A new ticket from " + company)
+            # msg.recipients("daniel.melchior@gmail.com")
+            # msg.add_recipients(driverEmail)
             
             msg.html=render_template('/email.html', **locals())
+            # uncomment if you want to send signature as attachment
+            # with app.open_resource("signature.png") as fp:
+            #     msg.attach("signature.png", "image/png", fp.read())
+
             with app.open_resource("signature.png") as fp:
-                msg.attach("signature.png", "image/png", fp.read())
-            # msg.attach('header.gif','image/gif',open(join(mail_blueprint.static_folder, 'header.gif'), 'rb').read(), 'inline', headers={'Content-ID': '<MyImage>'})
-            # msg.attach(sig, 'inline', headers={'Content-ID': '<MyImage>'})
+                msg.attach("signature.png", "image/png", fp.read(), "inline", headers=[['Content-ID','<signature>'],])
+            
             mail.send(msg)
          
             return render_template('/email.html', **locals())
