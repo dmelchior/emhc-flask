@@ -101,7 +101,7 @@ def submit_form():
             
             mail.send(msg)
          
-            return render_template('/email.html', **locals())
+            return render_template('/thankyou.html', **locals())
         except:
             return "didn't save to database"
     else:   
