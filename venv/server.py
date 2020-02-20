@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_mail import Mail, Message
 import csv
+from binascii import a2b_base64
 
 app = Flask(__name__)
 
@@ -78,6 +79,13 @@ def submit_form():
             driverEmail = request.form.get("driver-email")
             sig = request.form.get("sig")
 
+            # convert signature from base64 data-url to an image
+            data = sig[22:]
+            binary_data = a2b_base64(data)
+            fd = open('signature.png', 'wb')
+            fd.write(binary_data)
+            fd.close()
+
             msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
     # msg.subject("A new ticket from " + company)
     # msg.recipients("daniel.melchior@gmail.com")
@@ -85,8 +93,12 @@ def submit_form():
             # msg.body = "Time: " + time 
             # email_template = "Eric Melchior Hauling Company\n3870 Karleen Rd. Hephzibah GA 30815\nOffice:(706)309-9926\n\nDate/Time: %s \nCompany Name: %s \nPayment Option: %s \nMaterial: %s \nLoad Size: %s \nOptional Info: %s \nDriver: %s \nDriver Email: %s \nDriver Signature: %s" % (time, company, payment, material, yards, optional, driver, driverEmail, sig)
             # msg.body = email_template
+            
             msg.html=render_template('/email.html', **locals())
-           
+            with app.open_resource("signature.png") as fp:
+                msg.attach("signature.png", "image/png", fp.read())
+            # msg.attach('header.gif','image/gif',open(join(mail_blueprint.static_folder, 'header.gif'), 'rb').read(), 'inline', headers={'Content-ID': '<MyImage>'})
+            # msg.attach(sig, 'inline', headers={'Content-ID': '<MyImage>'})
             mail.send(msg)
          
             return render_template('/email.html', **locals())
