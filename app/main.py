@@ -18,7 +18,7 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
-    app.run(host='ericmelchiorhauling.com')
+    app.run(host='ericmelchiorhauling.com',debug=True, port=80)
 
 # if __name__ == "__main__":
 #     # Only for debugging while developing
@@ -78,7 +78,7 @@ def submit_form():
             fd.write(binary_data)
             fd.close()
 
-            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", "amelchior@hotmail.com", driverEmail])
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", driverEmail])
             
             msg.html=render_template('/email.html', **locals())
             # uncomment if you want to send signature as attachment
