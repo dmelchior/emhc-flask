@@ -2,142 +2,43 @@
 <html>
     <head>
         <title>Ticket Form | Eric Melchior Hauling Company, Inc.</title>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	    <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/5028/styling-basics_2.css'>
-	    <link rel="stylesheet" type="text/css" href="./static/ticket_style2.css">
         <!--Import Google Icon Font-->
-        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Let browser know website is optimized for mobile-->
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twi tter-bootstrap/4.0.0/css/bootstrap-reboot.min.css">         -->
-        <!-- <link rel="stylesheet" type="text/css" href="static/ticket_style.css"> -->
-        
-        <!-- <link rel="stylesheet" type="text/css" href="static/esignature.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twi tter-bootstrap/4.0.0/css/bootstrap-reboot.min.css">        
+        <link rel="stylesheet" type="text/css" href="static/ticket_style.css">
+        <link rel="stylesheet" type="text/css" href="static/esignature.css">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         
     </head>
     <body>
         <form action="/" class="ym-form">
-            
             <div class="ym-fbox">
-              <input name="time" id="datetime" class="placeholderanimation" type="datetime"> 
-              <!-- <input type="text" id="textinput-1" class="placeholderanimation" /> -->
-              <label for="datetime" class="animatedlabel">Date/Time</label>
+              <input type="text" id="textinput-1" class="placeholderanimation" />
+              <label for="textinput-1" class="animatedlabel">Title</label>
           </div>
-            <div class="ym-fbox ym-g33 ym-gl">
-              <!-- <input type="text" id="textinput-2" class="placeholderanimation" />
-              <label for="textinput-2" class="animatedlabel">Price</label> -->
-              <select name="payment" id="field-payment" class="form-element-field">
-                <option disabled selected value="Please Select a Payment Option" class="form-select-placeholder"></option>
-                <option value="Cash">Paying with Cash</option>
-                <option value="Account">Adding to Account</option>
-                <option value="Credit" disabled>Paying with Credit Card (Call Office)</option>
-            </select>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-payment">Select a Payment Type</label>
+            <div class="ym-fbox ym-g50 ym-gl">
+              <input type="text" id="textinput-2" class="placeholderanimation" />
+              <label for="textinput-2" class="animatedlabel">Price</label>
           </div>
-            <div class="ym-fbox ym-g33 ym-gr">
-              <!-- <input type="text" id="textinput-3" class="placeholderanimation" />
-              <label for="textinput-3" class="animatedlabel">Specific location (optional)</label> -->
-              <select name="material" id="field-material" class="form-element-field">
-                <option disabled selected value="" class="form-select-placeholder"></option>
-                <option value="Trees/Limbs">Trees/Limbs</option>
-                <option value="Concrete">Concrete</option>
-                <option value="Asphalt">Asphalt</option>
-                <option value="Brick/Block">Brick/Block</option>
-                <option value="Mud">Mud</option>
-                <option value="Clean Dirt">Clean Dirt</option>
-            </select>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-material">What Are You Bringing?</label>
+            <div class="ym-fbox ym-g50 ym-gr">
+              <input type="text" id="textinput-3" class="placeholderanimation" />
+              <label for="textinput-3" class="animatedlabel">Specific location (optional)</label>
           </div>
-          <div class="ym-fbox ym-g33 ym-gr">
-            <!-- <input type="text" id="textinput-3" class="placeholderanimation" />
-            <label for="textinput-3" class="animatedlabel">Specific location (optional)</label> -->
-            <select name="material" id="field-material" class="form-element-field">
-              <option disabled selected value="" class="form-select-placeholder"></option>
-              <option value="Trees/Limbs">Trees/Limbs</option>
-              <option value="Concrete">Concrete</option>
-              <option value="Asphalt">Asphalt</option>
-              <option value="Brick/Block">Brick/Block</option>
-              <option value="Mud">Mud</option>
-              <option value="Clean Dirt">Clean Dirt</option>
-          </select>
-          <div class="form-element-bar"></div>
-          <label class="form-element-label" for="field-material">What Are You Bringing?</label>
-        </div>
             <div class="ym-fbox clearme">
               <textarea name="comment" id="textinput-4" class="placeholderanimation"></textarea>
               <label for="textinput-4" class="animatedlabel">Description</label>
           </div>
-          
-        <div class="form-element form-input">
-            <input name="time" id="datetime" class="form-element-field" type="datetime">
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="datetime">Date / Time</label>
-        </div>
-        <div class="form-element form-input">
-            <input name="company" id="field-company" class="form-element-field" placeholder="Please fill in the full company name" type="input" required/>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-company">Company Name</label>
-        </div>
-        <div class="form-element form-select">
-            <select name="payment" id="field-payment" class="form-element-field">
-                <option disabled selected value="Please Select a Payment Option" class="form-select-placeholder"></option>
-                <option value="Cash">Paying with Cash</option>
-                <option value="Account">Adding to Account</option>
-                <option value="Credit" disabled>Paying with Credit Card (Call Office)</option>
-            </select>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-payment">Select a Payment Type</label>
-        </div>
-        <div class="form-element form-select">
-            <select name="material" id="field-material" class="form-element-field">
-                <option disabled selected value="" class="form-select-placeholder"></option>
-                <option value="Trees/Limbs">Trees/Limbs</option>
-                <option value="Concrete">Concrete</option>
-                <option value="Asphalt">Asphalt</option>
-                <option value="Brick/Block">Brick/Block</option>
-                <option value="Mud">Mud</option>
-                <option value="Clean Dirt">Clean Dirt</option>
-            </select>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-material">What Are You Bringing?</label>
-        </div>                
-        <div class="form-element form-input">
-            <input name="yards" id="field-yards" class="form-element-field" placeholder="Enter the size of your load in yards" type="number" required/>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-yards">How Many Yards?</label>
-            <small class="form-element-hint"><a href="/calcyardage.html" target="_blank">Not Sure? Calculate the yardage.</a></small>
-        </div>
-        <div class="form-element form-textarea">
-            <textarea name="optional" id="field-optional-info" class="form-element-field" placeholder="Additional Information [Truck/Trailer Number, P.O., Job Info, Etc.]"></textarea>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-optional-info">Optional Information</label>
-        </div>
-        <div class="form-element form-input">
-            <input name="driver" id="field-driver-name" class="form-element-field" placeholder="Driver first and last name" type="input" required/>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-driver-name">Driver Name</label>
-        </div>
-        <div class="form-element form-input">
-            <input name="driver-email" id="field-driver-email" class="form-element-field" placeholder="Driver Email Address" type="email" required/>
-            <div class="form-element-bar"></div>
-            <label class="form-element-label" for="field-driver-email">Driver Email (So we can send you a copy of your ticket)</label>
-        </div>
             <div class="ym-fbox">
               <button class="ym-button">Send me</button>
           </div>
       </form>
       
         <!-- Compiled and minified JavaScript -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-        
-        <!-- <script src="static/ticket_script.js"></script> -->
-        <!-- <script src="static/esignature.js"></script> -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src="static/ticket_script2.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="static/ticket_script.js"></script>
+        <script src="static/esignature.js"></script>
     </body>
 </html>
