@@ -13,14 +13,9 @@ let passiveSupported = false;
     })();
   
     var canvas = document.getElementById("sig-canvas");
-    // var container = document.getElementsByClassName("form-element");
-    // var container_width = container.width;
-    // canvas.width = container_width; 
-    // console.log(width); 
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
-    ctx.lineWidth = 2;
-    // ctx.setAttribute("width") = 
+    ctx.lineWidth = 3;
   
     var drawing = false;
     var mousePos = {
