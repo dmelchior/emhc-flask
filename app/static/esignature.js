@@ -1,3 +1,5 @@
+let passiveSupported = false;
+
 (function() {
     window.requestAnimFrame = (function(callback) {
       return window.requestAnimationFrame ||
@@ -11,9 +13,14 @@
     })();
   
     var canvas = document.getElementById("sig-canvas");
+    // var container = document.getElementsByClassName("form-element");
+    // var container_width = container.width;
+    // canvas.width = container_width; 
+    // console.log(width); 
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 2;
+    // ctx.setAttribute("width") = 
   
     var drawing = false;
     var mousePos = {
@@ -90,21 +97,21 @@
     }
   
     // Prevent scrolling when touching the canvas
-    document.body.addEventListener("touchstart", function(e) {
+    window.document.body.addEventListener("touchstart", function(e) {
       if (e.target == canvas) {
         e.preventDefault();
       }
-    }, false);
-    document.body.addEventListener("touchend", function(e) {
+    }, {passive:false});
+    window.document.body.addEventListener("touchend", function(e) {
       if (e.target == canvas) {
         e.preventDefault();
       }
-    }, false);
-    document.body.addEventListener("touchmove", function(e) {
+    }, {passive:false});
+    window.document.body.addEventListener("touchmove", function(e) {
       if (e.target == canvas) {
         e.preventDefault();
       }
-    }, false);
+    }, {passive:false});
   
     (function drawLoop() {
       requestAnimFrame(drawLoop);

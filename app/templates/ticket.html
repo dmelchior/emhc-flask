@@ -6,14 +6,14 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twi tter-bootstrap/4.0.0/css/bootstrap-reboot.min.css">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap-reboot.min.css">        
         <link rel="stylesheet" type="text/css" href="static/ticket_style.css">
         <link rel="stylesheet" type="text/css" href="static/esignature.css">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         
     </head>
     <body>
-        <form action="submit_form" method="post" class="form-card">
+        <form id="sig-container" action="submit_form" method="post" class="form-card">
             <fieldset class="form-fieldset">
                 <legend class="form-legend">Eric Melchior Hauling Co.<br><small>3870 Karleen Rd. Hephzibah GA 30815</small>
                     <br><small>Office:(706) 309-9926</small></legend></legend>
@@ -69,7 +69,7 @@
                 <div class="form-element form-input">
                     <input name="driver-email" id="field-driver-email" class="form-element-field" placeholder="Driver Email Address" type="email" required/>
                     <div class="form-element-bar"></div>
-                    <label class="form-element-label" for="field-driver-email">Driver Email (So we can send you a copy of your ticket)</label>
+                    <label class="form-element-label" for="field-driver-email">Driver Email (To send you a copy)</label>
                 </div>
 	<!-- E-Signature -->
                 <div class="container">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <canvas id="sig-canvas" width="435" height="160">
+                            <canvas id="sig-canvas" width="300" height="100">
                                 Please update your browser to sign your ticket.
                             </canvas>
                         </div>
