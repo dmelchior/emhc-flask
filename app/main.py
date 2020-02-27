@@ -18,7 +18,7 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
-    app.run(host='ericmelchiorhauling.com',debug=True, port=80)
+    app.run(host='0.0.0.0',debug=True, port=80)
 
 # if __name__ == "__main__":
 #     # Only for debugging while developing
@@ -27,6 +27,10 @@ if __name__ == "__main__":
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/ticket')
+def ticket():
+    return render_template('ticket.html')
 
 @app.route('/spreadsheet')
 def spreadsheet():
