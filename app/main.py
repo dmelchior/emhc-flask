@@ -32,6 +32,10 @@ def index():
 def spreadsheet():
     return render_template('spreadsheet.html')
 
+@app.route('/ticket')
+def ticket():
+    return render_template('ticket.html')
+
 @app.route('/<string:page_name>')
 def html_page(page_name):
     return render_template(page_name)
