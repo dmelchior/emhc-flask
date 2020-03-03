@@ -19,7 +19,7 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='ericmelchiorhauling.com')
 
 # if __name__ == "__main__":
 #     # Only for debugging while developing
