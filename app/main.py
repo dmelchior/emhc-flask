@@ -3,6 +3,7 @@ from flask_mail import Mail, Message
 import csv
 from binascii import a2b_base64
 
+
 app = Flask(__name__)
 
 mail_settings ={
@@ -18,7 +19,7 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
-    app.run(host='ericmelchiorhauling.com',debug=True, port=80)
+    app.run(host='0.0.0.0')
 
 # if __name__ == "__main__":
 #     # Only for debugging while developing
@@ -41,8 +42,7 @@ def html_page(page_name):
     return render_template(page_name)
 
 def write_to_csv(data):
-    with open('templates/database.csv', mode='a', newline="") as database2:
-        # date = data['date']
+    with open('app/templates/database.csv', mode='a', newline="") as database2:
         time = data['time']
         company = data['company']
         payment = data['payment']
@@ -53,8 +53,8 @@ def write_to_csv(data):
         driverEmail = data['driver-email']
         sig = data['sig']
         csv_writer = csv.writer(database2, delimiter=',',
-                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        
+                            quotechar='"', quoting=csv.QUOTE_MINIMAL)        
+
         csv_writer.writerow([time, company, payment, material, yards, optional, driver, driverEmail, sig])
 
 @app.route('/submit_form', methods=['POST', 'GET'])
@@ -78,11 +78,11 @@ def submit_form():
             # convert signature from base64 data-url to an image
             data = sig[22:]
             binary_data = a2b_base64(data)
-            fd = open('signature.png', 'wb')
+            fd = open('app/static/signature.png', 'wb')
             fd.write(binary_data)
             fd.close()
 
-            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", driverEmail])
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", "ericmelchiorhauling@gmail.com", driverEmail])
             
             msg.html=render_template('/email.html', **locals())
             # uncomment if you want to send signature as attachment
@@ -90,7 +90,7 @@ def submit_form():
             #     msg.attach("signature.png", "image/png", fp.read())
 
             # attach signature embedded in email
-            with app.open_resource("signature.png") as fp:
+            with app.open_resource("static/signature.png") as fp:
                 msg.attach("signature.png", "image/png", fp.read(), "inline", headers=[['Content-ID','<signature>'],])
             
             mail.send(msg)
