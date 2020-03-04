@@ -2,6 +2,8 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_mail import Mail, Message
 import csv
 from binascii import a2b_base64
+
+
 app = Flask(__name__)
 
 mail_settings ={
@@ -17,7 +19,7 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 if __name__ == "__main__":
-    app.run(host='ericmelchiorhauling.com',debug=True, port=80)
+    app.run(host='ericmelchiorhauling.com')
 
 # if __name__ == "__main__":
 #     # Only for debugging while developing
@@ -40,8 +42,7 @@ def html_page(page_name):
     return render_template(page_name)
 
 def write_to_csv(data):
-    with open('database.csv', mode='a', newline="") as database2:
-        # date = data['date']
+    with open('app/templates/database.csv', mode='a', newline="") as database2:
         time = data['time']
         company = data['company']
         payment = data['payment']
@@ -52,8 +53,8 @@ def write_to_csv(data):
         driverEmail = data['driver-email']
         sig = data['sig']
         csv_writer = csv.writer(database2, delimiter=',',
-                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        
+                            quotechar='"', quoting=csv.QUOTE_MINIMAL)        
+
         csv_writer.writerow([time, company, payment, material, yards, optional, driver, driverEmail, sig])
 
 @app.route('/submit_form', methods=['POST', 'GET'])
@@ -64,32 +65,32 @@ def submit_form():
             data = request.form.to_dict()
             write_to_csv(data)
             # for email
-            ##time = request.form.get("time")
-            ##company = request.form.get("company")
-            ##payment = request.form.get("payment")
-            ##material = request.form.get("material")
-            ##yards = request.form.get("yards")
-            ##optional = request.form.get("optional")
-            ##driver = request.form.get("driver")
-            ##driverEmail = request.form.get("driver-email")
-            ##sig = request.form.get("sig")
+            time = request.form.get("time")
+            company = request.form.get("company")
+            payment = request.form.get("payment")
+            material = request.form.get("material")
+            yards = request.form.get("yards")
+            optional = request.form.get("optional")
+            driver = request.form.get("driver")
+            driverEmail = request.form.get("driver-email")
+            sig = request.form.get("sig")
 
             # convert signature from base64 data-url to an image
-            ##data = sig[22:]
-            ##binary_data = a2b_base64(data)
-            ##fd = open('signature.png', 'wb')
-            ##fd.write(binary_data)
-            ##fd.close()
+            data = sig[22:]
+            binary_data = a2b_base64(data)
+            fd = open('app/static/signature.png', 'wb')
+            fd.write(binary_data)
+            fd.close()
 
-            ##msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com"])
+            msg = Message("A new ticket has been created!", sender=("Eric Melchior Hauling Company", "ericmelchiorhauling@gmail.com"), recipients=["daniel.melchior@gmail.com", "ericmelchiorhauling@gmail.com", driverEmail])
             
-            ##msg.html=render_template('/email.html', **locals())
+            msg.html=render_template('/email.html', **locals())
             # uncomment if you want to send signature as attachment
             # with app.open_resource("signature.png") as fp:
             #     msg.attach("signature.png", "image/png", fp.read())
 
             # attach signature embedded in email
-            with app.open_resource("signature.png") as fp:
+            with app.open_resource("static/signature.png") as fp:
                 msg.attach("signature.png", "image/png", fp.read(), "inline", headers=[['Content-ID','<signature>'],])
             
             mail.send(msg)
