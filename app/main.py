@@ -42,7 +42,7 @@ def html_page(page_name):
     return render_template(page_name)
 
 def write_to_csv(data):
-    with open('app/templates/database.csv', mode='a', newline="") as database2:
+    with open('templates/database.csv', mode='a', newline="") as database2:
         time = data['time']
         company = data['company']
         payment = data['payment']
@@ -78,7 +78,7 @@ def submit_form():
             # convert signature from base64 data-url to an image
             data = sig[22:]
             binary_data = a2b_base64(data)
-            fd = open('app/static/signature.png', 'wb')
+            fd = open('static/signature.png', 'wb')
             fd.write(binary_data)
             fd.close()
 
